@@ -2,33 +2,18 @@ import { useCallback, useState } from "react";
 
 export interface IntroProps {
   setToggle: (toogle: boolean) => void;
+  onPlay: (toogle: boolean) => void;
 }
 
-const Intro = ({ setToggle }: IntroProps) => {
+const Intro = ({ setToggle, onPlay }: IntroProps) => {
   const [introTransform, setIntroTransform] = useState("");
 
-  const handlePlayStarted = useCallback(() => {}, []);
   const handlePlayEnded = useCallback(() => {
     setIntroTransform(`translateY(-100%)`);
     setToggle(false);
   }, []);
   return (
     <>
-      <div
-        style={{
-          position: "absolute",
-          textAlign: "center",
-          width: "100%",
-          zIndex: "5",
-          padding: "48px",
-        }}
-      >
-        <img
-          style={{ width: "50%" }}
-          src="/assets/photo/logoGucci.png"
-          alt="Logo Gucci"
-        />
-      </div>
       <div
         style={{
           position: "absolute",
@@ -56,7 +41,7 @@ const Intro = ({ setToggle }: IntroProps) => {
           }}
           src="/assets/videos/intro.mp4"
           onPlay={() => {
-            console.log("started");
+            onPlay(true);
           }}
           onEnded={handlePlayEnded}
         ></video>

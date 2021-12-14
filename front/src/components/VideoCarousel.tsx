@@ -16,16 +16,26 @@ const colorSet = [
   },
 ];
 
+const videoData = [
+  { src: "/assets/videos/slider1_video1boomerang.mp4" },
+  { src: "/assets/videos/slider1_video2boomerang.mp4" },
+  { src: "/assets/videos/slider1_video3boomerang.mp4" },
+  { src: "/assets/videos/slider1_video4boomerang.mp4" },
+  { src: "/assets/videos/slider1_video5boomerang.mp4" },
+  { src: "/assets/videos/slider1_video6boomerang.mp4" },
+];
+
 const ContainerWrapper = styled.div`
   background: ${(props) => props.color || "none"};
-  background-color: transparent;
   opacity: 1;
   z-index: 1;
   width: 100vw;
   min-height: 100vh;
 `;
+
 const VideoCarousel = () => {
   const [backgroundColor, setBackgroundColor] = useState("");
+
   let idx = 0;
 
   useEffect(() => {
@@ -42,6 +52,12 @@ const VideoCarousel = () => {
     };
   }, []);
 
-  return <ContainerWrapper color={backgroundColor}></ContainerWrapper>;
+  useEffect(() => {}, []);
+
+  return (
+    <ContainerWrapper color={backgroundColor}>
+      <div></div>
+    </ContainerWrapper>
+  );
 };
 export default VideoCarousel;
